@@ -1,0 +1,23 @@
+{
+  "name": "authenticate",
+  "version": "1.0.0",
+  "description": "Authentication Microservice",
+  "main": "main.js",
+  "scripts": {
+    "test": "mocha --recursive test"
+  },
+  "author": "Francisco Mejia",
+  "license": "UNLICENSED",
+  "dependencies": {
+    "app-module-path": "^2.2.0",
+    "egads": "^1.0.1",
+    "express": "^4.16.1",
+    "lodash": "^4.17.4",
+    "loglevel": "^1.5.0",
+    "nconf": "^0.8.5",
+    "pg": "^7.3.0",
+    "sequelize": "^4.13.5",
+    "umzug": "^2.0.1",
+    "uuid-validate": "0.0.2"
+  }
+}
