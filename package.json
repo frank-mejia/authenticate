@@ -10,14 +10,21 @@
   "license": "UNLICENSED",
   "dependencies": {
     "app-module-path": "^2.2.0",
+    "bcrypt": "^1.0.3",
     "egads": "^1.0.1",
+    "email-validator": "^1.1.1",
     "express": "^4.16.1",
+    "express-arbitrate": "0.0.4",
+    "jsonwebtoken": "^8.1.0",
     "lodash": "^4.17.4",
     "loglevel": "^1.5.0",
     "nconf": "^0.8.5",
     "pg": "^7.3.0",
+    "redis": "^2.8.0",
     "sequelize": "^4.13.5",
     "umzug": "^2.0.1",
-    "uuid-validate": "0.0.2"
+    "uuid": "^3.1.0",
+    "uuid-validate": "0.0.2",
+    "zxcvbn": "^4.4.2"
   }
 }

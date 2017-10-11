@@ -30,7 +30,33 @@ const AccountModel = DB.sequelize.define('Accounts', {
         type: DB.Sequelize.TEXT,
         allowNull: false,
         unique: true,
-    }
+    },
+
+    method: {
+        type: DB.Sequelize.TEXT,
+        allowNull: true,
+        validate: {
+            isIn: [['password']],
+        },
+    },
+
+    credentials: {
+        type: DB.Sequelize.JSONB,
+        allowNull: true,
+        defaultValue: {},
+    },
+
+    refreshToken: {
+        type: DB.Sequelize.TEXT,
+        allowNull: true,
+        unique: true,
+    },
+
+    metadata: {
+        type: DB.Sequelize.JSONB,
+        allowNull: false,
+        defaultValue: {},
+    },
 
 },{});
 

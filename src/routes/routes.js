@@ -6,6 +6,9 @@ const config = require('nconf');
 
 //router.use('/password', require('./routes/password.router.js'));
 //router.use('/rest', require('./routes/rest.router.js'));
+router.use('/account', require('./account.router.js'));
+router.use('/authenticate', require('./authenticate.router.js'));
+router.use('/token', require('./token.router.js'));
 
 // Development endpoint to quickly check what spec is deployed
 router.get('/',

@@ -3,10 +3,7 @@
 const Migration = {
 
     up: (queryInterface, schema, Sequelize) => {
-        return createAccountsTable(queryInterface, schema, Sequelize)
-            .then(() => {
-                return createLoginMethodsTable(queryInterface, schema, Sequelize);
-            });
+        return createAccountsTable(queryInterface, schema, Sequelize);
     },
 
     down: (queryInterface, schema, Sequelize) => {
@@ -42,47 +39,21 @@ const createAccountsTable = (queryInstance, schema, Sequelize) => {
                 allowNull: true,
             },
 
-            createdAt: { type: Sequelize.DATE },
-            updatedAt: { type: Sequelize.DATE },
-        },
-        {
-            schema: schema
-        }
-    );
-};
-
-const createLoginMethodsTable = (queryInterface, schema, Sequelize) => {
-    return queryInterface.createTable(
-        'LoginMethods',
-        {
-            id: {
-                type: Sequelize.BIGINT,
-                primaryKey: true,
-                autoIncrement: true,
-            },
-
-            accountId: {
-                type: Sequelize.BIGINT,
-                references: {
-                    model: {
-                        schema: schema,
-                        tableName: 'Accounts',
-                    },
-                    key: 'id',
-                },
-                onUpdate: 'cascade',
-                onDelete: 'cascade',
-            },
-
-            scheme: {
+            method: {
                 type: Sequelize.TEXT,
-                allowNull: false,
+                allowNull: false
             },
 
             credentials: {
                 type: Sequelize.JSONB,
                 allowNull: false,
                 defaultValue: {},
+            },
+
+            refreshToken: {
+                type: Sequelize.TEXT,
+                allowNull: true,
+                unique: true,
             },
 
             metadata: {
@@ -99,6 +70,5 @@ const createLoginMethodsTable = (queryInterface, schema, Sequelize) => {
         }
     );
 };
-
 
 module.exports = Migration;

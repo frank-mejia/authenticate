@@ -29,7 +29,6 @@ const defaults = {
 
 const prepareModels = () => {
     DB.Data.Account = require('../models/account.model.js');
-    DB.Data.LoginMethod = require('../models/loginMethod.model.js');
 };
 
 const prepareSchema = (schema) => {

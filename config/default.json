@@ -12,5 +12,20 @@
       "ssl": false
     }
   },
-  "port": 8180
+  "port": 7000,
+  "jwt": {
+    "publicKey": "-----BEGIN PUBLIC KEY-----\nMIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQC8Guyf9i7PFsFXUDUgvvGiLbjt\n5P3aMkA0IvRcomcFYFm+VDwJdz/pJiOr1bN9GE/AKSjc/mb7Wri9aFOOn6/Za9lH\n912MEnbubOHatFgYhHZ+j+XnGwYreIZgUv3fQ6CTpxF39OT95w5C4+Jcw/ed67vn\nqO9eeuBzUFPMJUFSrwIDAQAB\n-----END PUBLIC KEY-----",
+    "privateKey": "-----BEGIN RSA PRIVATE KEY-----\nMIICXgIBAAKBgQC8Guyf9i7PFsFXUDUgvvGiLbjt5P3aMkA0IvRcomcFYFm+VDwJ\ndz/pJiOr1bN9GE/AKSjc/mb7Wri9aFOOn6/Za9lH912MEnbubOHatFgYhHZ+j+Xn\nGwYreIZgUv3fQ6CTpxF39OT95w5C4+Jcw/ed67vnqO9eeuBzUFPMJUFSrwIDAQAB\nAoGAOJ7mIRRKbL2Nvwl+pHe1ZjrbEoi+PMKpfsgSxBuCZSTmfpr+Y18I1tZLIHs4\nBuydfNsm2LafKwPY3fKcTC8XEBcp4UYIEbVHte9gaoAYxdIJLnAK6N/JuwDaNtHH\nZa/xb8ws0pgw6Df7+l0cjGyOnKmFNnB3Jozau9Fn/Ra8j1kCQQD1rTd0k8nIS5Zs\nrrSSfWIIYKBssVg26GWqPxgVN6WGS0iwTUbVHWt1KtcceQffsAJeaNt22gxQVXpb\n8ET/Agz1AkEAxAJm9zo/hw13s+pmlUGpWrVMd1uHk235Xo4xi1yf4NL0LYjqUhkx\nY+jQotfP3+s/GehJBg6jNVYOU4AwINcakwJBALBj06Mh0Qi8LJ6PuRpMZ6x4I/am\nRh32MbhQYKwrLe8D8oaSlT7CRrrzLUtGIr8aEjlSs+/bkmfDV3zXP9KP2FkCQQCg\nVn63+jQBW+jxietEaSQKCYh1krACz9FPoe2xXKGEHcyUew2C/wzB967DptprB1rk\n7HjftZWYib7KW3ADTTJ1AkEAnihZmZAYGUU9S5ENd+rPrVP25e5g45t5zvOtzx6+\noKhCtiYUGr7DSios0+kL081vtZPG5btAnWEr/kkR4K/Ndg==\n-----END RSA PRIVATE KEY-----",
+    "algorithm": "RS512",
+    "accessTokenExpiry": 300
+  },
+  "service": {
+    "name": "Authenticate"
+  },
+  "cache": {
+    "host": "localhost",
+    "port": 6379,
+    "user": "",
+    "db": "0"
+  }
 }
