@@ -32,6 +32,18 @@ const TokenRepository = {
         // first remove refreshToken from DB
         return AccountRepository.removeRefreshTokenFromAccountWithExternalId(decodedToken.sub);
     },
+
+    isAccessTokenBlackListed: (token) => {
+        const key = `access-token-blacklist-${token}`;
+        return Cache.get(key)
+            .then((value) => {
+                if (value) {
+                    return Promise.reject(new Error('Token has been blacklisted'));
+                } else {
+                    return Promise.resolve();
+                }
+            });
+    }
 };
 
 module.exports = TokenRepository;

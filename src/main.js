@@ -12,7 +12,6 @@ const config = require('nconf')
     .file('environment', { file: `${configPath}/${process.env.NODE_ENV}.json` })
     .file('defaults', { file: `${configPath}/default.json` });
 
-//const logger = require('src/util/logger.js');
 const db = require('./util/db');
 
 
@@ -23,7 +22,6 @@ const port = config.get('port');
 const app = require('./app');
 db.ready().then(() => {
     app.listen(port, () => {
-        //logger.core.info(`Listening on port ${port}`);
         console.log(`Listening on port ${port}`);
     });
 });

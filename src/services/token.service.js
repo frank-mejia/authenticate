@@ -10,6 +10,24 @@ const AccountRepository = require('src/repositories/account.repository.js');
 const Err = require('src/util/error.js');
 
 const TokenService = {
+    middleware: {
+        enforceValidAccessToken: (req, res, next) => {
+            const token = req.query.token;
+            return TokenService.verifyToken(token, 'access')
+                .then(() => {
+                    return TokenService.isAccessTokenBlackListed(token)
+                        .then(() => {
+                            next();
+                        });
+                })
+                .catch(next);
+        }
+    },
+
+    isAccessTokenBlackListed: (token) => {
+        return TokenRepository.isAccessTokenBlackListed(token);
+    },
+
     generateToken: (payload, options) => {
         return new Promise((resolve, reject) => {
             const token = jwt.sign(payload, config.get('jwt:privateKey'), options);

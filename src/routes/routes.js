@@ -10,24 +10,5 @@ router.use('/account', require('./account.router.js'));
 router.use('/authenticate', require('./authenticate.router.js'));
 router.use('/token', require('./token.router.js'));
 
-// Development endpoint to quickly check what spec is deployed
-router.get('/',
-    (req, res) => {
-
-        if (config.get('NODE_ENV') === 'production') {
-            return res.status(404).send({
-                message: 'The requested resource does not exist.',
-                resource: `${req.method} ${req.path}`,
-            });
-        }
-
-        if (!_.isUndefined(req.query.pretty)) {
-            return res
-                .header('Content-Type','application/json')
-                .send(JSON.stringify(require('./spec/app.spec.js'), null, 4));
-        }
-        return res.json(require('./spec/app.spec.js'));
-    }
-);
 
 module.exports = router;

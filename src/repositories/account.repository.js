@@ -47,6 +47,10 @@ const AccountRepository = {
                 }
                 return Promise.reject(new Err('Account with provided id does not exist'));
             })
+    },
+
+    getAllAccounts: () => {
+        return AccountModel.findAll();
     }
 };
 

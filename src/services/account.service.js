@@ -33,6 +33,13 @@ const AccountService = {
 
     getAccountByEmail: (email) => {
         return AccountRepository.getAccountByEmail(email);
+    },
+
+    getAllAccounts: () => {
+        return AccountRepository.getAllAccounts()
+            .then((accounts) => {
+                return _.map(accounts, formatResponse);
+            })
     }
 };
 

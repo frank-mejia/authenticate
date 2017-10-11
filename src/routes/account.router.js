@@ -3,34 +3,31 @@
 const router = require('express').Router();
 const arbitrate = require('express-arbitrate');
 
-//const Logger = require('src/util/logger.js').passwordRouter;
 const AccountService = require('src/services/account.service.js');
+const TokenService = require('src/services/token.service.js');
 
 const PasswordService = require('src/services/password.service.js');
 const EmailService = require('src/services/email.service.js');
 
 router.post('/',
-    (req, res, next) => {
-    console.log('Received request!');
-    console.log(req.body.name);
-    next();
-    },
-    /*
     arbitrate.validateRequest({
         name: {
             type: arbitrate.type.String,
-            required: true
+            required: true,
+            location: arbitrate.location.Body
         },
         email: {
             type: arbitrate.type.String,
-            required: true
+            required: true,
+            location: arbitrate.location.Body
+
         },
         password: {
             type: arbitrate.type.String,
-            required: true
+            required: true,
+            location: arbitrate.location.Body
         }
     }),
-    */
     PasswordService.middleware.enforcePasswordStrength,
     EmailService.middleware.enforceValidEmail,
     (req, res, next) => {
@@ -42,5 +39,24 @@ router.post('/',
             .catch(next);
     },
     );
+
+router.get('/',
+    arbitrate.validateRequest({
+        token: {
+            type: arbitrate.type.String,
+            required: true,
+            location: arbitrate.location.Query
+        }
+    }),
+    TokenService.middleware.enforceValidAccessToken,
+    (req, res, next) => {
+        return AccountService.getAllAccounts()
+            .then((accounts) => {
+                res.status(200).json({
+                    accounts: accounts
+                });
+            })
+            .catch(next);
+    });
 
 module.exports = router;

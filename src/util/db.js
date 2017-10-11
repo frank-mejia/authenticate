@@ -1,7 +1,6 @@
 'use strict';
 
 const _         = require('lodash');
-const config    = require('nconf');
 const Umzug     = require('umzug');
 const Sequelize = require('sequelize');
 
@@ -25,10 +24,6 @@ const defaults = {
             ],
         },
     }
-};
-
-const prepareModels = () => {
-    DB.Data.Account = require('../models/account.model.js');
 };
 
 const prepareSchema = (schema) => {
@@ -77,13 +72,11 @@ const DB = {
     Sequelize: Sequelize,
     sequelize: {},
     umzug: {},
-    Data: {},
     initializeWithObject: (options, logger = null) => {
         Options = _.defaults({}, options, defaults);
         DB.sequelize = new Sequelize(Options);
         prepareSchema(options.schema);
         prepareLogging(logger);
-        prepareModels();
         prepareUmzug();
     },
     migrate: () => {
