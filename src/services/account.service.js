@@ -40,6 +40,11 @@ const AccountService = {
             .then((accounts) => {
                 return _.map(accounts, formatResponse);
             })
+    },
+
+    getAccountByExternalId: (externalId) => {
+        return AccountRepository.getAccountWithExternalId(externalId)
+            .then(formatResponse);
     }
 };
 

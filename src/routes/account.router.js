@@ -46,14 +46,19 @@ router.get('/',
             type: arbitrate.type.String,
             required: true,
             location: arbitrate.location.Query
+        },
+        id: {
+            type: arbitrate.type.String,
+            required: true,
+            location: arbitrate.location.Query
         }
     }),
     TokenService.middleware.enforceValidAccessToken,
     (req, res, next) => {
-        return AccountService.getAllAccounts()
+        return AccountService.getAccountByExternalId(req.query.id)
             .then((accounts) => {
                 res.status(200).json({
-                    accounts: accounts
+                    account: accounts
                 });
             })
             .catch(next);

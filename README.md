@@ -29,13 +29,14 @@ Creates a new user account
     </tbody>
 </table>
 
-### GET /v1/accounts
+### GET /v1/account
 Get all user accounts
 
 #### Parameters
 | Location | Name | Type | Required | Description |
 | -------- | ---- | ---- | -------- | ----------- |
 | body | `token` | string | true | A valid access token |
+| body | `id` | string | true | A valid user id |
 
 #### Response
 <table>
@@ -48,11 +49,11 @@ Get all user accounts
     </thead>
     <tbody>
         <tr><td> 200 </td><td> <pre lang="javascript">{
-  "accounts": [{
+  "account": {
   	"id" Users id,
     "name": Users name,
     "email": Users email
-  }]
+  }
 }</pre> </td><td> Account retrieval was successfull </td></tr>
 <tr><td> 401 </td><td> None </td><td> Supplied token is invalid </td></tr>
     </tbody>
