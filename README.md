@@ -30,7 +30,7 @@ Creates a new user account
 </table>
 
 ### GET /v1/account
-Get all user accounts
+Get a specific user account
 
 #### Parameters
 | Location | Name | Type | Required | Description |
